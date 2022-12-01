@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "starts": "nodemon app.js",
     "start-server": "node app.js",
-    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve app.js",
-    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build app.js"
+    "build": "netlify-lambda build express",
+    "start": "nodemon app.js"
   },
   "author": "Maximilian Schwarzmüller",
   "license": "ISC",
