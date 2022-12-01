@@ -7,6 +7,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
 const multer = require('multer');
+const serverless = require("serverless-http");
 
 const errorController = require('./controllers/error');
 const shopController = require('./controllers/shop');
@@ -88,7 +89,7 @@ app.use((req, res, next) => {
       next();
     })
     .catch(err => {
-      console.log('Error',err);
+      console.log('Error', err);
     });
 });
 
@@ -118,6 +119,8 @@ app.use((error, req, res, next) => {
   });
 });
 
+
+
 mongoose
   .connect(MONGODB_URI)
   .then(result => {
@@ -126,3 +129,4 @@ mongoose
   .catch(err => {
     console.log(err);
   });
+  module.exports.handler = serverless(app);
